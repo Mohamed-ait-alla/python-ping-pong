@@ -27,9 +27,15 @@ while game_on:
     screen.update()
     time.sleep(0.1)
     ball.goto(ball.xcor() + ball.x_move, ball.ycor() + ball.y_move)
+    # when it crashes the up or down wall
     if (ball.ycor() <= -210 or ball.ycor() >= 210):
         ball.y_move *= -1
+    # when it get close to one the paddles
     if ((ball.xcor() <= -220 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 220 and ball.distance(right_paddle) <= 50)):
+        ball.x_move *= -1
+    # when it goes arround
+    if (ball.xcor() > 280 or ball.xcor() < -280):
+        ball.goto(0, 0)
         ball.x_move *= -1
     
 screen.exitonclick()
