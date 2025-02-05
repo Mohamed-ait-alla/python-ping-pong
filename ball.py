@@ -8,3 +8,5 @@ class Ball(Turtle):
         self.penup()
         self.goto(0,0)
         self.color("white")
+        self.x_move = 10
+        self.y_move = 10
