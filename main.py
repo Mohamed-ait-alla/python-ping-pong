@@ -22,10 +22,11 @@ screen.onkey(right_paddle.go_down, "Down")
 screen.onkey(left_paddle.go_up, "w")
 screen.onkey(left_paddle.go_down, "s")
 
+default_speed = 0.1
 game_on = True
 while game_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(default_speed)
     ball.goto(ball.xcor() + ball.x_move, ball.ycor() + ball.y_move)
     # when it crashes the up or down wall
     if (ball.ycor() <= -210 or ball.ycor() >= 210):
@@ -33,9 +34,11 @@ while game_on:
     # when it get close to one the paddles
     if ((ball.xcor() <= -220 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 220 and ball.distance(right_paddle) <= 50)):
         ball.x_move *= -1
+        default_speed *= 0.9
     # when it goes arround
     if (ball.xcor() > 280 or ball.xcor() < -280):
         ball.goto(0, 0)
         ball.x_move *= -1
+        default_speed = 0.1
     
 screen.exitonclick()
