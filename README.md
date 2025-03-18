@@ -20,8 +20,8 @@ This is a simple Ping Pong game implemented using Python's `turtle` module. It f
 1. Clone the repository and Navigate to it:
 
    ```bash
-   git clone https://github.com/yourusername/ping-pong-game.git
-   cd ping-pong-game
+   git clone https://github.com/Mohamed-ait-alla/python-ping-pong.git
+   cd /path/to/directory/cloned
 2. Ensure you have Python 3.x and turtle installed on your machine. If you're missing turtle, it can be installed via the following (although it usually comes pre-installed with Python):
 
    ```bash
