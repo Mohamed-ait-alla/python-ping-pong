@@ -13,8 +13,8 @@ screen.setup(800, 500)
 screen.tracer(0)
 
 scope = Scope()
-right_paddle = Paddle((320,0))
-left_paddle = Paddle((-320,0)) 
+right_paddle = Paddle((330, 30))
+left_paddle = Paddle((-330, -30))
 ball = Ball()
 scoreboard = Scoreboard()
  
@@ -36,9 +36,9 @@ while game_on:
     if (ball.ycor() <= -190 or ball.ycor() >= 190):
         ball.y_move *= -1
     # when it get close to one of the paddles
-    if ((ball.xcor() <= -300 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 300 and ball.distance(right_paddle) <= 50)):
+    if ((ball.xcor() <= -310 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 310 and ball.distance(right_paddle) <= 50)):
         ball.x_move *= -1
-        default_speed *= 0.6
+        default_speed *= 0.9
     # when it goes arround toward right side
     if (ball.xcor() > 350):
         ball.goto(0, 0)
