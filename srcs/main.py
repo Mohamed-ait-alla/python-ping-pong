@@ -1,4 +1,5 @@
 from turtle import Screen, Turtle
+from scope import Scope
 from paddel import Paddle
 from ball import Ball
 from score import Scoreboard
@@ -8,11 +9,12 @@ screen = Screen()
 
 screen.title("Ping pong game")
 screen.bgcolor("black")
-screen.screensize(600, 600)
+screen.setup(800, 500)
 screen.tracer(0)
 
-right_paddle = Paddle((240,0))
-left_paddle = Paddle((-240,0)) 
+scope = Scope()
+right_paddle = Paddle((320,0))
+left_paddle = Paddle((-320,0)) 
 ball = Ball()
 scoreboard = Scoreboard()
  
@@ -31,20 +33,20 @@ while game_on:
     time.sleep(default_speed)
     ball.goto(ball.xcor() + ball.x_move, ball.ycor() + ball.y_move)
     # when it crashes the up or down wall
-    if (ball.ycor() <= -210 or ball.ycor() >= 210):
+    if (ball.ycor() <= -190 or ball.ycor() >= 190):
         ball.y_move *= -1
-    # when it get close to one the paddles
-    if ((ball.xcor() <= -220 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 220 and ball.distance(right_paddle) <= 50)):
+    # when it get close to one of the paddles
+    if ((ball.xcor() <= -300 and ball.distance(left_paddle) <= 50) or (ball.xcor() >= 300 and ball.distance(right_paddle) <= 50)):
         ball.x_move *= -1
-        default_speed *= 0.9
+        default_speed *= 0.6
     # when it goes arround toward right side
-    if (ball.xcor() > 280):
+    if (ball.xcor() > 350):
         ball.goto(0, 0)
         ball.x_move *= -1
         default_speed = 0.1
         scoreboard.update_left_score()
     # when it goes arround toward left side
-    if (ball.xcor() < -280):
+    if (ball.xcor() < -350):
         ball.goto(0, 0)
         ball.x_move *= -1
         default_speed = 0.1
